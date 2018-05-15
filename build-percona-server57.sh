@@ -15,3 +15,10 @@ wget -O /etc/my.cnf https://raw.githubusercontent.com/vynt-kenshiro/build-percon
 mkdir /var/lib/mysql/
 chown mysql:mysql /var/lib/mysql
 wget -O /usr/lib/systemd/system/mysqld.service https://raw.githubusercontent.com/vynt-kenshiro/build-percona-server57/master/mysqld.service
+systemctl enable mysqld
+
+# Change root password
+echo "Please change root password by execute these commands \
+/usr/local/mysql/bin/mysql -h localhost -S /var/lib/mysql/mysqld.sock -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'amb1@123A';
+"
